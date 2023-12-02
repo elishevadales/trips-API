@@ -1,0 +1,42 @@
+header{
+    background: rgb(86, 120, 205);
+    min-height: 50px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+header .container h2{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: white;
+}
+.table1{
+    margin-bottom: 100px;
+}
+h3{
+    margin-top: 50px;
+    margin-bottom: 20px;
+    color: rgb(86, 120, 205);
+}
+th{
+    color: rgb(86, 120, 205);
+}
+.code{
+    font-family: 'Fira Code';
+}
+.Body{
+    width: 30%;
+}
+
+footer{
+    margin-top: 50px;
+    background: rgb(86, 120, 205);
+    min-height: 100px;
+}
+
+footer .container{
+    min-height: inherit;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
