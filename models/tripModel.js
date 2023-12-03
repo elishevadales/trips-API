@@ -23,7 +23,7 @@ exports.tripValid = (_bodyValid) =>{
       info:Joi.string().min(2).max(99).required(),
       category:Joi.string().min(2).max(99).required(),
       img_url:Joi.string().min(2).max(10000).allow(null,""),
-      price:Joi.number().min(1).max(100000).required()
+      price:Joi.number().min(0).max(100000).required()
   })
   return joiSchema.validate(_bodyValid);
 }
