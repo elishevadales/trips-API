@@ -4,7 +4,7 @@ const { TripModel, tripValid } = require("../models/tripModel")
 const router = express.Router();
 const { auth } = require("../middleware/auth")
 
-
+//get all trips
 router.get("/", async (req, res) => {
   let perPage = Math.min(req.query.perPage, 20) || 10;
   let page = req.query.page || 1;
@@ -25,6 +25,8 @@ router.get("/", async (req, res) => {
   }
 })
 
+
+//search by name and info
 router.get("/search", async (req, res) => {
   let perPage = req.query.perPage || 10;
   let page = req.query.page || 1;
@@ -52,6 +54,8 @@ router.get("/search", async (req, res) => {
   }
 })
 
+
+//search trips by category
 router.get("/category/:catname", async (req, res) => {
   let perPage = req.query.perPage || 10;
   let page = req.query.page || 1;
@@ -80,13 +84,22 @@ router.get("/category/:catname", async (req, res) => {
   }
 })
 
+
+//get single trip by its id
 router.get("/single/:tripId", async (req, res) => {
-  let tripId = req.params.tripId;
+  try{
+      let tripId = req.params.tripId;
   let trip = await TripModel.findOne({ _id: tripId });
   res.json(trip);
+  }
+  catch (err) {
+    console.log(err);
+    res.status(500).json({ msg: "err", err })
+  }
+
 })
 
-
+//get trips by their price
 router.get("/prices", async (req, res) => {
   let minPrice = req.query.min || 0;
   let maxPrice = req.query.max || 10000;
@@ -116,9 +129,10 @@ router.get("/prices", async (req, res) => {
   }
 })
 
-router.get("/tripsByUserId/:userId", auth, async (req, res) => {
-  let userId = req.params.userId;
 
+//get all trips that a spesific user created
+router.get("/tripsByUserId/:userId", async (req, res) => {
+  let userId = req.params.userId;
 
   try {
 
@@ -142,7 +156,7 @@ router.get("/tripsByUserId/:userId", auth, async (req, res) => {
 
 
 
-
+//add new trip
 router.post("/", auth, async (req, res) => {
 
   let valdiateBody = tripValid(req.body);
@@ -167,6 +181,8 @@ router.post("/", auth, async (req, res) => {
 
 })
 
+
+//edit trip
 router.put("/:editId", auth, async (req, res) => {
   let validBody = tripValid(req.body);
   if (validBody.error) {
@@ -187,13 +203,8 @@ router.put("/:editId", auth, async (req, res) => {
         data = await TripModel.updateOne({ _id: editId, user_id: req.tokenData._id }, req.body)
 
       }
-
-
-
     }
     res.json(data);
-
-
   }
   catch (err) {
     console.log(err);
@@ -202,7 +213,7 @@ router.put("/:editId", auth, async (req, res) => {
 })
 
 
-
+//delete trip
 router.delete("/:delId", auth, async (req, res) => {
 
   try {
@@ -222,8 +233,6 @@ router.delete("/:delId", auth, async (req, res) => {
       else {
         data = await TripModel.deleteOne({ _id: delId })
       }
-
-
     }
     res.json(data);
   }

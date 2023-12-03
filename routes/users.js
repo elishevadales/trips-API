@@ -4,6 +4,8 @@ const { auth } = require("../middleware/auth");
 const { UserModel, userValid, loginValid, createToken } = require("../models/userModel")
 const router = express.Router();
 
+
+//get all users
 router.get("/", async (req, res) => {
   let perPage = Math.min(req.query.perPage, 20) || 5;
   let page = req.query.page || 1;
@@ -24,9 +26,31 @@ router.get("/", async (req, res) => {
   }
 })
 
+//get one user
+router.get("/single/:userId", async (req, res) => {
+
+  let userId = req.params.userId;
+
+  try {
+    let user = await UserModel.findOne({ _id: userId });
+    if (user.trips.length > 0) {
+
+      await user.populate("trips")
+    }
+
+    res.json(user)
+
+  }
+  catch (err) {
+    console.log(err);
+    res.status(500).json({ msg: "err", err })
+  }
+
+})
 
 
 
+//add new user
 router.post("/", async (req, res) => {
 
   let valdiateBody = userValid(req.body);
@@ -52,6 +76,8 @@ router.post("/", async (req, res) => {
 
 })
 
+
+//login
 router.post("/login", async (req, res) => {
   let valdiateBody = loginValid(req.body);
   if (valdiateBody.error) {
@@ -77,7 +103,7 @@ router.post("/login", async (req, res) => {
 })
 
 
-
+//delete user
 router.delete("/:delId", auth, async (req, res) => {
   if (req.tokenData.role == "admin") {
     let delId = req.params.delId;
