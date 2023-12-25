@@ -34,7 +34,7 @@
 
         <tr>
           <td>GET</td>
-          <td>domain/trips/perPage={x}&page={y}&sort={trip_atribute}&reverse={yes}</td>
+          <td>https://tripsapi.onrender.com/trips/perPage={x}&page={y}&sort={trip_atribute}&reverse={yes}</td>
           <td>-</td>
           <td>Get a list of all the trips.<br>
             x represents the amount of trips that will be displayed on the page,
@@ -44,47 +44,47 @@
 
         <tr>
           <td>GET</td>
-          <td>domain/trips/single/{trip_id}</td>
+          <td>https://tripsapi.onrender.com/trips/single/{trip_id}</td>
           <td>-</td>
           <td>Get one trip by its _id</td>
         </tr>
 
         <tr>
           <td>GET</td>
-          <td>domain/trips/search?s={name or info}</td>
+          <td>https://tripsapi.onrender.com/trips/search?s={name or info}</td>
           <td>-</td>
           <td>Get a list of the trips by name or info. It will present 10 results per page</td>
         </tr>
 
         <tr>
           <td>GET</td>
-          <td>domain/trips/search?s={name_or_info}&perPage={x}&page={y}</td>
+          <td>https://tripsapi.onrender.com/trips/search?s={name_or_info}&perPage={x}&page={y}</td>
           <td>-</td>
           <td>Get a list of the trips by name or info. It will present x results per page and will take you to page y
           </td>
         </tr>
         <tr>
           <td>GET</td>
-          <td>domain/trips/category/{category}</td>
+          <td>https://tripsapi.onrender.com/trips/category/{category}</td>
           <td>-</td>
           <td>Get a list of the trips by category. It will present 10 results per page</td>
         </tr>
         <tr>
           <td>GET</td>
-          <td>domain/trips/category/{category}?perPage={x}&page={y}</td>
+          <td>https://tripsapi.onrender.com/trips/category/{category}?perPage={x}&page={y}</td>
           <td>-</td>
           <td>Get a list of the trips by category. It will present x results per page and will take you to page y</td>
         </tr>
         <tr>
           <td>GET</td>
-          <td>domain/trips/prices?min={x}&max={y}</td>
+          <td>https://tripsapi.onrender.com/trips/prices?min={x}&max={y}</td>
           <td>-</td>
           <td>Shows only the trips that their price is less/equal x and greater/equal y</td>
         </tr>
 
         <tr>
           <td>GET</td>
-          <td>domain/trips/prices?min={x}&max={y}&perPage={z}&page={w}</td>
+          <td>https://tripsapi.onrender.com/trips/prices?min={x}&max={y}&perPage={z}&page={w}</td>
           <td>-</td>
           <td>Shows only the trips that their price is less/equal x and greater/equal y. It will present z results per
             page and will take you to page w</td>
@@ -92,14 +92,14 @@
 
         <tr>
           <td>GET</td>
-          <td>domain/trips/tripsByUserId/{userId}</td>
+          <td>https://tripsapi.onrender.com/trips/tripsByUserId/{userId}</td>
           <td>-</td>
           <td>Shows all trips that a spesific user created.</td>
         </tr>
 
         <tr>
           <td>POST</td>
-          <td>domain/trips</td>
+          <td>https://tripsapi.onrender.com/trips</td>
           <td class="code">
             {<br>
             "name": "nahal bokek",<br>
@@ -117,7 +117,7 @@
 
         <tr>
           <td>PUT</td>
-          <td>domain/trips/{trip_Id}</td>
+          <td>https://tripsapi.onrender.com/trips/{trip_Id}</td>
           <td class="code">{
             <br>"name": "rosh hanikra",<br>
             "info": "nice view on the sea",<br>
@@ -133,7 +133,7 @@
         </tr>
         <tr>
           <td>DELETE</td>
-          <td>domain/trips/{trip_Id}</td>
+          <td>https://tripsapi.onrender.com/trips/{trip_Id}</td>
           <td>-</td>
           <td>Delete a trip from data base by trip's _id.
             You need to send a token in the `Headers` for this query.<br>
@@ -151,7 +151,7 @@
         </tr>
         <tr>
           <td>GET</td>
-          <td>domain/users/perPage={x}&page={y}&sort={user_atribute}&reverse={yes}</td>
+          <td>https://tripsapi.onrender.com/users/perPage={x}&page={y}&sort={user_atribute}&reverse={yes}</td>
           <td>-</td>
           <td>Get a list of all the users.<br> x represents the amount of users that will be displayed on the page,
             y - the page number, user_atribute - the sort by specific attribute, and "yes" if you want to sort from
@@ -160,14 +160,14 @@
         </tr>
         <tr>
           <td>GET</td>
-          <td>domain/users/single/{userId}</td>
+          <td>https://tripsapi.onrender.com/users/single/{userId}</td>
           <td>-</td>
           <td>Get one user by his _id.<br>
           </td>
         </tr>
         <tr>
           <td>POST</td>
-          <td>domain/users</td>
+          <td>https://tripsapi.onrender.com/users</td>
           <td class="code">{<br>
             "name":"yehuda",<br>
             "email":"yehuda@gmail.com",<br>
@@ -178,7 +178,7 @@
         </tr>
         <tr>
           <td>POST</td>
-          <td>domain/users/login</td>
+          <td>https://tripsapi.onrender.com/users/login</td>
           <td class="code">{<br>
             "email":"yehuda@gmail.com",<br>
             "password":"123456"<br>
@@ -189,7 +189,7 @@
         </tr>
         <tr>
           <td>DELETE</td>
-          <td>domain/users/{userId}</td>
+          <td>https://tripsapi.onrender.com/users/{userId}</td>
           <td class="code">-
 
           </td>
